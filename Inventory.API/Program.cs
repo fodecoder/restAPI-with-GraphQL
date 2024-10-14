@@ -38,7 +38,7 @@ builder.Services.AddDatabase<InventoryDBContext> ();
 builder.Services.AddSingleton<IDocumentExecuter , DocumentExecuter> ();
 builder.Services.AddSingleton<IGraphQLSerializer , GraphQLSerializer> ();
 builder.Services.AddTransient<InventoryQuery> ();
-builder.Services.AddSingleton<ISchema , GraphQLSchema<InventoryQuery>> ( services => new GraphQLSchema<InventoryQuery> ( new SelfActivatingServiceProvider ( services ) ) );
+builder.Services.AddScoped<ISchema , GraphQLSchema<InventoryQuery>> ( services => new GraphQLSchema<InventoryQuery> ( new SelfActivatingServiceProvider ( services ) ) );
 builder.Services.AddGraphQLExtension<InventoryQuery> ( options =>
 {
     options.EndPoint = "/graphql";

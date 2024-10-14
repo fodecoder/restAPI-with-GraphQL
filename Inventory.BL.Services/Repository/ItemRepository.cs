@@ -33,6 +33,13 @@ namespace Inventory.BL.Services.Repository
             await _inventoryDb.SaveChangesAsync ();
         }
 
+        public async Task<IEnumerable<Item>> GetDBItemListAsync( int limit )
+        {
+            return await _inventoryDb.Items
+                .Take ( limit )
+                .ToListAsync ();
+        }
+
         public async Task<Item> ReadDBItemAsync( Guid id )
         {
             return await _inventoryDb.Items
