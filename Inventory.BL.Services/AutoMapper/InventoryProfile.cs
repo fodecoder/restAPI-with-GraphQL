@@ -2,7 +2,7 @@
 using Inventory.BL.Interfaces.Model;
 using DB = Common.DB.Model;
 
-namespace Inventory.BL.Interfaces.AutoMapper
+namespace Inventory.BL.Services.AutoMapper
 {
     public class InventoryProfile : Profile
     {
