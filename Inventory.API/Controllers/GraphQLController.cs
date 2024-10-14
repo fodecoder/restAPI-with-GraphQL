@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Inventory.API.Controllers
 {
-    [ApiController]
-    [Route ( "[controller]" )]
+    //[ApiController]
+    //[Route ( "[controller]" )]
     public sealed class GraphQLController : Controller
     {
         private readonly ISchema _schema;
