@@ -1,8 +1,15 @@
 using Common.DB.Extension;
-using Inventory.BL.Interfaces.AutoMapper;
+using Common.GraphQL.Extensions;
+using Common.GraphQL.Schemas;
+using GraphQL;
+using GraphQL.MicrosoftDI;
+using GraphQL.SystemTextJson;
+using GraphQL.Types;
 using Inventory.BL.Interfaces.Repository;
 using Inventory.BL.Interfaces.Service;
+using Inventory.BL.Services.AutoMapper;
 using Inventory.BL.Services.Context;
+using Inventory.BL.Services.Queries;
 using Inventory.BL.Services.Repository;
 using Inventory.BL.Services.Services;
 
@@ -27,6 +34,16 @@ builder.Services.AddAutoMapper ( typeof ( InventoryProfile ) );
 // Add Db Context
 builder.Services.AddDatabase<InventoryDBContext> ();
 
+// Add GraphQL 
+builder.Services.AddSingleton<IDocumentExecuter , DocumentExecuter> ();
+builder.Services.AddSingleton<IGraphQLSerializer , GraphQLSerializer> ();
+builder.Services.AddTransient<InventoryQuery> ();
+builder.Services.AddSingleton<ISchema , GraphQLSchema<InventoryQuery>> ( services => new GraphQLSchema<InventoryQuery> ( new SelfActivatingServiceProvider ( services ) ) );
+builder.Services.AddGraphQLExtension<InventoryQuery> ( options =>
+{
+    options.EndPoint = "/graphql";
+} );
+
 var app = builder.Build ();
 
 // Configure the HTTP request pipeline.
@@ -41,5 +58,13 @@ app.UseHttpsRedirection ();
 app.UseAuthorization ();
 
 app.MapControllers ();
+
+app.UseRouting ();
+
+// GraphQL
+app.UseGraphQLGraphiQL ();
+app.UseGraphQL<ISchema> ();
+
+app.UseHttpsRedirection ();
 
 app.Run ();

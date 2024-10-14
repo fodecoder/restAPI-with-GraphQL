@@ -7,10 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="GraphQL" Version="8.1.0" />
+    <PackageReference Include="GraphQL.Server.All" Version="8.0.3" />
+    <PackageReference Include="GraphQL.Server.Ui.GraphiQL" Version="8.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Common.GraphQL\Common.GraphQL.csproj" />
     <ProjectReference Include="..\Inventory.BL.Interfaces\Inventory.BL.Interfaces.csproj" />
     <ProjectReference Include="..\Inventory.BL.Services\Inventory.BL.Services.csproj" />
   </ItemGroup>
