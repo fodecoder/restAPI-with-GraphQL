@@ -35,9 +35,9 @@ namespace Inventory.BL.Services.Services
             await _itemRepository.DeleteDBItemAsync ( id );
         }
 
-        public async Task<IEnumerable<Item>> GetItemsAsync( int limit )
+        public async Task<IEnumerable<Item>> GetItemsAsync( string name , int limit )
         {
-            var retValue = await _itemRepository.GetDBItemListAsync ( limit );
+            var retValue = await _itemRepository.GetDBItemListAsync ( name , limit );
             return _mapper.Map<IEnumerable<Item>> ( retValue );
         }
 

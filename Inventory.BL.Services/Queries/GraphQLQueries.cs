@@ -11,10 +11,10 @@ namespace Inventory.BL.Services.Queries
         {
             Field<ListGraphType<ItemData>> ( "items" )
                 .Description ( "Returns a collection of items." )
-                .Arguments ( new QueryArguments ( new QueryArgument<IntGraphType> { Name = "limit" } ) )
+                .Arguments ( new QueryArguments ( new QueryArgument<StringGraphType> { Name = "name" } , new QueryArgument<IntGraphType> { Name = "limit" } ) )
                 .ResolveAsync ( async context =>
                 {
-                    var retValue = await itemService.GetItemsAsync ( context.GetArgument<int> ( "limit" ) );
+                    var retValue = await itemService.GetItemsAsync ( context.GetArgument<string> ( "name" ) , context.GetArgument<int> ( "limit" ) );
                     return retValue;
                 } );
         }

@@ -33,9 +33,10 @@ namespace Inventory.BL.Services.Repository
             await _inventoryDb.SaveChangesAsync ();
         }
 
-        public async Task<IEnumerable<Item>> GetDBItemListAsync( int limit )
+        public async Task<IEnumerable<Item>> GetDBItemListAsync( string name , int limit )
         {
             return await _inventoryDb.Items
+                .Where ( i => i.Name.Contains ( name ) )
                 .Take ( limit )
                 .ToListAsync ();
         }

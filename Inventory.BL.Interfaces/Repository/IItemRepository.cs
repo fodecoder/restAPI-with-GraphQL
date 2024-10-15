@@ -11,6 +11,6 @@ namespace Inventory.BL.Interfaces.Repository
         Task DeleteDBItemAsync( Guid id );
 
         // List
-        Task<IEnumerable<Item>> GetDBItemListAsync( int limit );
+        Task<IEnumerable<Item>> GetDBItemListAsync( string name , int limit );
     }
 }
