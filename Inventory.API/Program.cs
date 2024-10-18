@@ -65,6 +65,4 @@ app.UseRouting ();
 app.UseGraphQLGraphiQL ();
 app.UseGraphQL<ISchema> ();
 
-app.UseHttpsRedirection ();
-
 app.Run ();

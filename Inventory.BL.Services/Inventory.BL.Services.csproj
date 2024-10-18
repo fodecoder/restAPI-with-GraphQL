@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Common.DB\Common.DB.csproj" />
+    <ProjectReference Include="..\Common.ProxyService\Common.ProxyService.csproj" />
     <ProjectReference Include="..\Inventory.BL.Interfaces\Inventory.BL.Interfaces.csproj" />
   </ItemGroup>
 
