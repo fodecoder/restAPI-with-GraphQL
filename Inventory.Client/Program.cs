@@ -1,6 +1,6 @@
 ﻿using Common.ProxyService.Extensions;
+using Inventory.BL.Interfaces.ProxyServices;
 using Inventory.BL.Interfaces.Service;
-using Inventory.BL.Services.ProxyServices;
 using Inventory.Client;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
